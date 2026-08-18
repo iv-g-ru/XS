@@ -12,6 +12,7 @@
 
  <pre>
    ::cm sum
+       var[result]
        +[result|arg0|arg1]
        pr[result]
    ::end
