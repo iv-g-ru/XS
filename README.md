@@ -1,5 +1,8 @@
 ENG: (English language documentation may not be complete. For javadoc, you can use Google Translate.)
 
+About the project:
+This is a lightweight interpreted programming language with an interpreter in a jar size of less than 50 KB. XS can serve as a scripting language in a project or as a standalone language. XS can interact with the Java ecosystem and make system calls, and also features built-in multithreading and the ability to make system calls.
+
 This contains an interpreter for the XS programming language and its Javadoc. Details are in Javadoc. The XS documentation is in engxsdoc.txt.
 
 XS project: https://github.com/iv-g-ru/XScmd
@@ -49,6 +52,9 @@ pr[value]
 
 
 RU:
+
+О проекте:
+Это лёгкий интерпретируемый язык программирования с интерпретатором меньше 50 кб jar . XS может служить как скриптовый язык в проекте, так и как самостоятельным языком. XS может взаимодейсвовать с экосистемой java и выполнять системные вызовы, а так же имеет всторенную многопоточность и имеет возможность выполнять системные вызовы.
 
 тут содержится интерпретатор для языка программирования XS и javadoc к нему. подробности в javadoc. документация по языку XS в xsdoc.txt.
 
