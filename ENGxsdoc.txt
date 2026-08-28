@@ -1,0 +1,186 @@
+XSDOC:
+.
+.
+ERRORS:
+.
+-1 End of program (normal termination)
+.
+0 Successful line execution (not an error)
+.
+1 Syntax error
+. Causes:
+. Unknown command
+. Incorrect call format (missing [] or |)
+. Unknown operator in expression
+2 Variable not found
+. Causes:
+. Accessing an undeclared variable
+. Assigning a value to a non-existent variable
+.
+3 Incorrect number of arguments
+. Causes:
+. The command is missing parameters
+. Missing | separator
+.
+4 Data type error
+. Causes:
+. A number was expected, but a string was received
+. A string was expected, but a number was received
+. Non-numeric index in an array
+. typeset: invalid conversion
+.
+5 Internal interpreter error
+. Causes:
+. Error within the command
+. 6 Index out of array bounds
+. Reasons:
+. arrget: index less than 0 or greater than the array size
+. arrset: index less than 0 or greater than the array size
+.
+7 Named code missing
+. Reasons:
+. do[nc] or trydo[nc] call a non-existent named code
+. ::nc is undefined
+.
+8 Could not find additional file
+. Reasons:
+. ::add could not find an xs file at the specified path
+.
+COMMANDS STARTING WITH :: OR _ GENERATE ONLY ERROR 5 OR 0 UNLESS OTHER ERRORS ARE STATED.
+.
+.
+COMMANDS:
+.
+. VARIABLES:
+. var[name] - create variable (0)
+. del[name] - delete variable
+. have[name|var] - check for existence (1 or 0)
+. ::push name - push variable onto stack
+. ::pop name - read variable from stack
+.
+. ASSIGNMENT (lines starting with "="):
+. =name|=value - assign
+. =name|+value - add
+. =name|-value - subtract
+. =name|*value - multiply
+. =name|/value - divide
+. =name|%value - remainder
+. =name|?value - compare (true/false)
+. =name|!value - not equal (true/false)
+. =name|&lt;value - less than (true/false)
+. =name|&gt;value - greater than (true/false)
+. CALCULATIONS IN ARGUMENTS (inside [ ]):
+. Any argument may begin with "=" and contain ":".
+. Format: =name:operator value
+. Example: +[result|=a:+b|5]- evaluates a+b and substitutes it, acting as a string beginning with =
+.
+. ARITHMETIC AND LOGIC (commands):
+. +[result|a|b] - addition, for strings, concatenation
+. -[result|a|b] - subtraction, for string a, deletes b characters from the beginning
+. *[result|a|b] - multiplication
+. /[result|a|b] - division, for strings, reversal
+. %[result|a|b] - remainder
+. &amp;[result|a|b] - AND (1 or 0)
+. ^[result|a|b] - OR (1 or 0)
+. ?[result|a|b] - equal to (1 or 0)
+. ![result|a|b] - not equal to (1 or 0)
+. &lt;[result|a|b] - less than (1 or 0)
+. &gt;[result|a|b] - greater than (1 or 0)
+. ARRAYS:
+. arr[name|size] - create an array
+. arrset[name|index|val] - set the value
+. arrget[name|index|var] - get the value
+. arrsiz[name|variable] - array size
+. arrdel[name] - delete an array
+. arrhave[name|variable] - check for existence (1 or 0)
+. When the program starts, an array with the program arguments "args" can be created
+. INPUT/OUTPUT (loud mode):
+. pr[variable] - print (_ are replaced with spaces)
+. pr[] - empty string
+. in[variable] - console input (spaces in _)
+.
+. CONTROL:
+. ::: label name - create a label
+. go[label] - go to label
+. if[variable] - if not 0, not null, or true - execute the next line, otherwise skip
+. ifdo[variable|name] - if not 0, not null, or true - execute the named code, otherwise do not execute
+. ifgo[variable|label] - if not 0, not null, or true - go to :::label, otherwise do not go
+. _error[error] - generates an error
+. ::exit - terminates program execution
+. ::ret array - sets the program output to the array
+.
+. NAMED CODE:
+. ::nc name ... ::end - define a named code
+. do[name] - execute
+. trydo[name|err_var] - execute (write the error to the variable)
+. ifdo[variable|name] - if not 0, not null, or true - execute the named code; otherwise, do not execute
+.
+. USER COMMANDS:
+. ::cm name ... ::end - define a command
+. Arguments are passed as arg0 arg1 ...
+. ::del name - delete a command during execution (loud mode)
+. ::load name - load a command from a file
+. ::write name - import a command to a file
+. SYSTEM CALLS (cando = true):
+. :sys::do[variable] - execute an OS command
+. :sys::outdo[var|array] - execute an OS command, save the output to an array
+.
+. TYPES:
+. type[variable|result] - write the type (int/float/text/arr)
+. typeset[type|variable] - convert to type, important: a variable cannot be converted to an array
+. TRANSLATION (allows you to write an array as a variable, or write a variable as an array):
+. movT[translation method|to|from]
+. Translation method:
+. arr - write the variable's value as an array
+. var - write the array's value as a variable
+. OTHER:
+. rand[variable] - random number 0..1 (float)
+. ::home name - writes the path to the home variable (loud mode)
+. ::homeset name - sets the home path to a variable (loud mode)
+. ::add file - adds everything in the file to the program as executable code (appends to the end of the file)
+. IMPORTANT! This command is executed only during standard startup.
+. Example:
+. ::add util - adds everything from the util.xs file in the current folder to the program after ::add
+. _cando[name] - writes to a variable whether the program is running in loud mode
+. _start[name|arguments|output|variable]
+. - in loud mode: the named code "name" is executed as a separate program in a separate thread, with an array of arguments and an array for output; the name of the running program is written to a variable
+. - in quiet mode: the code named "name" is executed as a separate program in the current thread, with an array of arguments and an array for output. The name of the running program is written to the variable. _run[name|arguments|output|variable]
+. - the code from the array "name" is executed as a separate program in the current thread, with an array of arguments and an array for output. The name of the running program is written to the variable. _name[variable] - writes the program name to the variable. _getnum[variable] - writes the number of all programs to the variable (loud mode). _write[variable] - writes the variable to the cell reserved for this program (the cell has the same number as the program). _read[name|variable] - writes the value of the cell to the variable (loud mode). _new[class|arguments|variable]
+. - only in loud mode: creates a new class object with the specified array of arguments in the constructor.
+. _do[object|method|arguments|variable]
+. - only in loud mode: executes a method on the specified object with the specified array of arguments, storing the result in the variable.
+. _type[object|variable] - stores the true type of the object in the variable.
+. _getXS[name] - sets the variable to a reference to a Java object representing the interpreter (loud mode) (there are contraindications for use).
+.
+COMMENTS are ",," or "//".
+EXAMPLE:
+. var[a] //declare a variable
+var[b] //declare a variable
+var[result] //declare a variable
+set[a|10] //set a value
+set[b|20] //set a value
++[result|a|b] //add a and b, storing the result in result
+pr[result] //print the result
+.
+::nc sum //declare a named code
+. var[sum] //declare a variable
+. +[sum|a|b]// add a and b, storing the result in sum
+. pr[sum] //print the result
+::end //end declaration of a named code
+var[a] //declare a variable
+var[b] //declare a variable
+set[a|1] //set a value
+ser[b|6] //set a value
+do[sum] //call a named code
+. arr[arr|5] //declare an array
+var[value] //declare a variable
+arrset[arr|0|42] //set the value 42 in the arr array at index 0
+arrget[arr|0|value] //read the value at index 0 in the arr array and write it to value
+pr[value] //print the result
+.
+.
+SECURITY:
+. in quiet mode: pr, in, :sys (and other commands marked as loud) are blocked.
+
+SPACES:
+. are removed during standard startup
