@@ -1,6 +1,6 @@
 ENG: (English language documentation may not be complete. For javadoc, you can use Google Translate.)
 
-This contains an interpreter for the XS programming language and its Javadoc. Details are in Javadoc. The XS documentation is in xsdoc.txt.
+This contains an interpreter for the XS programming language and its Javadoc. Details are in Javadoc. The XS documentation is in engxsdoc.txt.
 
 XS project: https://github.com/iv-g-ru/XScmd
 
