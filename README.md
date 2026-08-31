@@ -17,7 +17,7 @@ XS programs in silent mode can do anything the operating system command line or 
 
 More details about the language's capabilities are available in xsdoc.txt
 
-Instructions for using javaodc.rar: 1- unzip the archive, 2- open the index.html file, 3- congratulations, you've opened Javadoc.
+Instructions for using javafoc.rar: 1- unzip the archive, 2- open the index.html file, 3- congratulations, you've opened Javadoc.
 
 EXAMPLE:
 <pre>
@@ -70,7 +70,7 @@ RU:
 
 более подробно о возможностях языка написано в xsdoc.txt 
 
-инструкция по использованию javaodc.rar : 1- распакуйте архив, 2- откройте файл index.html, 3- поздравляю, вы открыли javadoc 
+инструкция по использованию javadoc.rar : 1- распакуйте архив, 2- откройте файл index.html, 3- поздравляю, вы открыли javadoc 
 
 ПРИМЕР:
  <pre>
