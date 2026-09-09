@@ -1,5 +1,11 @@
 XSDOC:
 .
+LINE 0: if it starts with "," (IMPORTANT: THIS APPLIES TO THE ENTIRE PROGRAM):
+. if followed by "+", it runs in "loud" mode (provided the program was launched in "loud" mode)
+. if followed by "-", it runs in "silent" mode
+. other parameters (separated by @): parameter 1 = launch type (+ or -), parameter 2 = opening character set (default: [), parameter 3 = command separator (default: |), parameter 4 = closing character set (default: ])
+. example of Line 0: ,+@(@,@) — now you can write `set(a,10)`, but not `set[a|10]`
+.
 .
 ERRORS:
 .
@@ -134,23 +140,26 @@ COMMANDS:
 . arr - write the variable's value as an array
 . var - write the array's value as a variable
 . OTHER:
-. rand[variable] - random number 0..1 (float)
-. ::home name - writes the path to the home variable (loud mode)
-. ::homeset name - sets the home path to a variable (loud mode)
-. ::add file - adds everything in the file to the program as executable code (appends to the end of the file)
-. IMPORTANT! This command is executed only during standard startup.
-. Example:
-. ::add util - adds everything from the util.xs file in the current folder to the program after ::add
-. _cando[name] - writes to a variable whether the program is running in loud mode
+. rand[variable]		- random number 0..1 (float)
+. ::home name		- writes the home path to the variable (verbose mode)
+. ::homeset name		- sets the home path in the variable (verbose mode)
+. ::add file		- adds the contents of the file to the program as executable code (appended to the end of the file)
+. IMPORTANT! This command executes only during standard startup
+. example:
+. ::add util		- everything from file util.xs in the current folder is added to the program after ::add
+. _cando[name] 		- writes to the variable: whether the program is running in verbose mode
 . _start[name|arguments|output|variable]
-. - in loud mode: the named code "name" is executed as a separate program in a separate thread, with an array of arguments and an array for output; the name of the running program is written to a variable
-. - in quiet mode: the code named "name" is executed as a separate program in the current thread, with an array of arguments and an array for output. The name of the running program is written to the variable. _run[name|arguments|output|variable]
-. - the code from the array "name" is executed as a separate program in the current thread, with an array of arguments and an array for output. The name of the running program is written to the variable. _name[variable] - writes the program name to the variable. _getnum[variable] - writes the number of all programs to the variable (loud mode). _write[variable] - writes the variable to the cell reserved for this program (the cell has the same number as the program). _read[name|variable] - writes the value of the cell to the variable (loud mode). _new[class|arguments|variable]
-. - only in loud mode: creates a new class object with the specified array of arguments in the constructor.
-. _do[object|method|arguments|variable]
-. - only in loud mode: executes a method on the specified object with the specified array of arguments, storing the result in the variable.
-. _type[object|variable] - stores the true type of the object in the variable.
-. _getXS[name] - sets the variable to a reference to a Java object representing the interpreter (loud mode) (there are contraindications for use).
+. - in verbose mode: the named code "name" executes as a separate program in a separate thread, with an arguments array and an output array; the name of the started program is written to the variable
+. - in quiet mode: the named code "name" executes as a separate program in the current thread, with an arguments array and an output array; the name of the started program is written to the variable
+. _sleep[time]		- pauses execution for the specified time or longer (in milliseconds)
+. _run[name|arguments|output|variable]
+. - code from the "name" array executes as a separate program in the current thread, with an arguments array and an output array; the name of the started program is written to the variable
+. _name[variable]	- writes the program name to the variable
+. _getnum[variable]	- writes the total number of programs to the variable (verbose mode)
+. _write[variable]	- writes the variable to the memory slot reserved for this program (the slot has the same number as the program)
+. _read[name|variable]	- writes the cell's value to the variable (verbose mode)
+. _readnz[name|variable]	- writes the cell's value to the variable, waiting until the cell's value is no longer 0 (verbose mode)
+. _type[object|variable]	- writes the object's true type to the variable
 .
 COMMENTS are ",," or "//".
 EXAMPLE:
