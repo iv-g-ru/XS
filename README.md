@@ -1,4 +1,4 @@
-ENG: (English language documentation may not be complete (javadoc). For javadoc, you can use Google Translate.)
+ENG: (For reading javadoc, you can use Google Translate.)
 
 About the project:
 This is a lightweight interpreted programming language with an interpreter in a jar size of less than 50 KB. XS can serve as a scripting language in a project or as a standalone language. XS can interact with the Java ecosystem and make system calls, and also features built-in multithreading and the ability to make system calls.
