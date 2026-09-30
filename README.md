@@ -9,7 +9,11 @@ This contains an interpreter for the XS programming language and its Javadoc. De
 
 XS project: https://github.com/iv-g-ru/XScmd
 
-Running an XS program without creating your own Java program that uses XS: java -jar "path to XS.jar file" path_to_XS_code path_to_set_of_commands (or 0) arguments_to_XS_program arguments_to_XS_program ...
+Usage:
+
+To run an XS program without creating a custom Java application that uses XS: `java -jar "path/to/XS.jar" path_to_XS_code XS_program_arguments ...`
+
+To run via a component: add `XS.jar` to your classpath and call `org.iv_g.main.MainXS.main(new String[]{path_to_XS_code, XS_program_arguments, ...})` in your project, or consult the Javadoc for other launch methods.
 
 Syntax for Notepad++: xs.xml (in Notepad++, Syntax > Custom Syntax > Set Custom Syntax > Import)
 
@@ -64,7 +68,11 @@ RU:
 
 проект на языке xs: https://github.com/iv-g-ru/XScmd
 
-запуск программы на XS без создания собственной программы на java используйщей XS: java -jar "путь к фалйу XS.jar" путь_к_XS_коду путь_к_набору_команд(или 0) аргументы_программе_XS аргументы_программе_XS ...
+Использование:
+
+ запуск программы на XS без создания собственной программы на java используйщей XS: java -jar "путь к фалйу XS.jar" путь_к_XS_коду аргументы_программе_XS аргументы_программе_XS ... 
+ 
+  запуск через библиотеку : установить classpath к файлу XS.jar , в проекте написать org.iv_g.main.MainXS.main(new String[]{путь_к_XS_коду, аргументы_программе_XS, аргументы_программе_XS, ... } или посмотреть способы запуска из javadoc
 
 синтаксис для notepad++ : xs.xml (в notepad++ синтаксисы > польз. синтаксис > задать свой синтаксис > импорт)
 
