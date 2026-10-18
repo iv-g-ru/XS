@@ -160,6 +160,22 @@ COMMANDS:
 . _read[name|variable]	- writes the cell's value to the variable (verbose mode)
 . _readnz[name|variable]	- writes the cell's value to the variable, waiting until the cell's value is no longer 0 (verbose mode)
 . _type[object|variable]	- writes the object's true type to the variable
+. NAMESPACES:
+. _movW[name|variable]	- copies the value of the variable into the variable named 'name' (within the target namespace).
+. _movL[variable|name]	- copies the value of the variable named 'name' (from the target namespace) into the specified variable.
+.	_jmp[current|name]	- saves all dependent variables, arrays, and named code from the current namespace, then switches to the namespace 'name', restoring the dependent variables, arrays, and named code associated with that namespace.
+. _namespace[variable]	- stores the name of the current namespace into the specified variable.
+. *Author's note: When defining your own commands, save any necessary data from the current namespace into global variables before switching to your own namespace—this prevents namespace pollution. Before exiting the command, restore the original namespace:
+. ::cm command
+. _movW[a|arg0]
+. _movW[b|arg1]
+. _namespace[c]
+. _jmp[c|mynamespace]
+. var[err]
+. trydo[mycode|err]	// ensures that, in the event of an error, the external environment's variables remain intact
+. _movW[err|err]	// passes an error message back to the external environment, if needed
+. _jmp[mynamespace|c]
+. ::end
 .
 COMMENTS are ",," or "//".
 EXAMPLE:
