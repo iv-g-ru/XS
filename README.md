@@ -17,7 +17,7 @@ To run via a component: add `XS.jar` to your classpath and call `org.iv_g.main.M
 
 Syntax for Notepad++: xs.xml (in Notepad++, Syntax > Custom Syntax > Set Custom Syntax > Import)
 
-The compact size of the JAR will also ensure faster startup and JIT compilation. Current size: 46,5 KB (47 699 byte)
+The compact size of the JAR will also ensure faster startup and JIT compilation. Current size: 46.8 KB (47 986 bytes)
 
 XS programs in silent mode can do anything the operating system command line or any Java program can.
 
@@ -76,7 +76,7 @@ RU:
 
 синтаксис для notepad++ : xs.xml (в notepad++ синтаксисы > польз. синтаксис > задать свой синтаксис > импорт)
 
-компактность jar так же обеспечит более высокую скорость запуска, и jit компиляции. вес на текущий момент: 46,5 КБ (47 699 байт)
+компактность jar так же обеспечит более высокую скорость запуска, и jit компиляции. вес на текущий момент: 46,8 КБ (47 986 байт)
 
 программы на XS в громком режиме способны выполнять всё что способна выполнять командная строка операционной системы или любая java программа
 
