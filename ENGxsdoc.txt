@@ -152,6 +152,7 @@ COMMANDS:
 . - in verbose mode: the named code "name" executes as a separate program in a separate thread, with an arguments array and an output array; the name of the started program is written to the variable
 . - in quiet mode: the named code "name" executes as a separate program in the current thread, with an arguments array and an output array; the name of the started program is written to the variable
 . _sleep[time]		- pauses execution for the specified time or longer (in milliseconds)
+. _time[variable]	- returns the current time value of the running Java Virtual Machine in nanoseconds
 . _run[name|arguments|output|variable]
 . - code from the "name" array executes as a separate program in the current thread, with an arguments array and an output array; the name of the started program is written to the variable
 . _name[variable]	- writes the program name to the variable
