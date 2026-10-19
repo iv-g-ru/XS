@@ -73,8 +73,8 @@ COMMANDS:
 . =name|%value - remainder
 . =name|?value - compare (true/false)
 . =name|!value - not equal (true/false)
-. =name|&lt;value - less than (true/false)
-. =name|&gt;value - greater than (true/false)
+. =name|<value - less than (true/false)
+. =name|>value - greater than (true/false)
 . CALCULATIONS IN ARGUMENTS (inside [ ]):
 . Any argument may begin with "=" and contain ":".
 . Format: =name:operator value
@@ -90,8 +90,8 @@ COMMANDS:
 . ^[result|a|b] - OR (1 or 0)
 . ?[result|a|b] - equal to (1 or 0)
 . ![result|a|b] - not equal to (1 or 0)
-. &lt;[result|a|b] - less than (1 or 0)
-. &gt;[result|a|b] - greater than (1 or 0)
+. <[result|a|b] - less than (1 or 0)
+. >[result|a|b] - greater than (1 or 0)
 . ARRAYS:
 . arr[name|size] - create an array
 . arrset[name|index|val] - set the value
@@ -140,7 +140,7 @@ COMMANDS:
 . rand[variable]		- random number 0..1 (float)
 . ::home name		- writes the home path to the variable (verbose mode)
 . ::homeset name		- sets the home path in the variable (verbose mode)
-. ::add file		- adds the contents of the file to the program as executable code (appended to the end of the file)
+. ::add file		- adds the contents of the file to the program as executable code 
 . IMPORTANT! This command executes only during standard startup
 . example:
 . ::add util		- everything from file util.xs in the current folder is added to the program after ::add
