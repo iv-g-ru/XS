@@ -124,9 +124,6 @@ COMMANDS:
 . USER COMMANDS:
 . ::cm name ... ::end - define a command
 . Arguments are passed as arg0 arg1 ...
-. ::del name - delete a command during execution (loud mode)
-. ::load name - load a command from a file
-. ::write name - import a command to a file
 . SYSTEM CALLS (cando = true):
 . :sys::do[variable] - execute an OS command
 . :sys::outdo[var|array] - execute an OS command, save the output to an array
