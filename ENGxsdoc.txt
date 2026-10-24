@@ -86,7 +86,7 @@ COMMANDS:
 . *[result|a|b] - multiplication
 . /[result|a|b] - division, for strings, reversal
 . %[result|a|b] - remainder
-. &amp;[result|a|b] - AND (1 or 0)
+. &[result|a|b] - AND (1 or 0)
 . ^[result|a|b] - OR (1 or 0)
 . ?[result|a|b] - equal to (1 or 0)
 . ![result|a|b] - not equal to (1 or 0)
